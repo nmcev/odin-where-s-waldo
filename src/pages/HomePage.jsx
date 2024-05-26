@@ -19,7 +19,6 @@ export default function HomePage() {
         fetchUsers()
     }, [])
 
-    console.log(users)
   return (
       <section className='flex flex-col items-center justify-center min-h-screen bg-red-200'>
           {/* image section */}
