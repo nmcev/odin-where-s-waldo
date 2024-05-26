@@ -1,13 +1,15 @@
 import { useNavigate } from 'react-router-dom'
 import waldo from '../assets/waldo.png'
 import { useEffect, useState } from 'react';
+const url = 'https://odin-waldo-api.onrender.com'
+
 export default function HomePage() {
     const navigate = useNavigate();
 
     const [users, setUsers] = useState([]);
     useEffect(() => {
         async function fetchUsers() {
-            const response = await fetch('http://localhost:3000/users', {
+            const response = await fetch(`${url}/users`, {
                 headers: {
                     "Content-Type": "application/json",
                     "Access-Control-Allow-Credentials": true,

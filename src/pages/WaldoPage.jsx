@@ -6,6 +6,7 @@ import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import Stopwatch from '../components/Watch';
 
+const url = 'https://odin-waldo-api.onrender.com'
 export default function WaldoPage() {
     const [position, setPosition] = useState({ x: 0, y: 0 });
     const [characters, setCharacters] = useState(['waldo', 'odlaw', 'wizard']);
@@ -44,7 +45,7 @@ export default function WaldoPage() {
         e.stopPropagation();
         const name = e.target.textContent.toLowerCase();
 
-        const response = await fetch('http://localhost:3000/api/checkPosition', {
+        const response = await fetch(`${url}/api/checkPosition`, {
             method: "POST",
             headers: {
                 'Content-Type': 'application/json',
@@ -68,7 +69,7 @@ export default function WaldoPage() {
     }
 
     async function handleSubmitName() {
-        const response = await fetch('http://localhost:3000/api/submitName', {
+        const response = await fetch(`${url}/api/submitName`, {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
