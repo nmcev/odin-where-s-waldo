@@ -1,8 +1,14 @@
-# React + Vite
+# Where is Waldo
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+It is a project as assignment with The Odin Project. To build a fullstack app using MERN stack. 
 
-Currently, two official plugins are available:
+### What is the game
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+[Where is Waldo](https://en.wikipedia.org/wiki/Where's_Wally%3F)
+
+### Used Tech
+
+- ReactJS
+- Tailwind
+- ExpressJS
+- MongoDB
