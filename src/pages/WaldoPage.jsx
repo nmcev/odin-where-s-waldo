@@ -47,7 +47,9 @@ export default function WaldoPage() {
         const response = await fetch('http://localhost:3000/api/checkPosition', {
             method: "POST",
             headers: {
-                'Content-Type': 'application/json'
+                'Content-Type': 'application/json',
+                "Access-Control-Allow-Credentials": true,
+                  
             },
             body: JSON.stringify({name, clickedPosition: position})
         })
@@ -69,7 +71,8 @@ export default function WaldoPage() {
         const response = await fetch('http://localhost:3000/api/submitName', {
             method: 'POST',
             headers: {
-                'Content-Type': 'application/json'
+                'Content-Type': 'application/json',
+                "Access-Control-Allow-Credentials": true,
             },
             body: JSON.stringify({name, duration: time})
         })

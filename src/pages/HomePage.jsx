@@ -7,7 +7,12 @@ export default function HomePage() {
     const [users, setUsers] = useState([]);
     useEffect(() => {
         async function fetchUsers() {
-            const response = await fetch('http://localhost:3000/users');
+            const response = await fetch('http://localhost:3000/users', {
+                headers: {
+                    "Content-Type": "application/json",
+                    "Access-Control-Allow-Credentials": true,
+                  },
+            });
 
             if (response.ok) {
                 const data = await response.json()
