@@ -6,6 +6,7 @@ const url = 'https://odin-waldo-api.onrender.com'
 export default function HomePage() {
     const navigate = useNavigate();
 
+    const [loading, setLoading] = useState(true);
     const [users, setUsers] = useState([]);
     useEffect(() => {
         async function fetchUsers() {
@@ -19,6 +20,7 @@ export default function HomePage() {
             if (response.ok) {
                 const data = await response.json()
                 setUsers(data.users)
+                setLoading(false)
             }
 
         }
@@ -37,45 +39,45 @@ export default function HomePage() {
 
           {/* content section */}
           <div className='flex mt-6'>
-              <button onClick={() => navigate('/where-is-waldo')} className='bg-orange-400 px-5 py-2 rounded-md font-montserrat'>
-                  Find Waldo!
-            </button>
+              <button  onClick={() => navigate('/where-is-waldo')} className='bg-orange-400 px-5 py-2 rounded-md font-montserrat'>
+                    {loading ? "Wait for the server to wake up" : 'Find Waldo'}
+              </button>
       </div>
       
 
 
 
       <div className="relative overflow-x-auto min-w-[32rem]  mt-3">
-    <table className="w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400">
-        <thead className="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
-            <tr>
-                <th scope="col" className="px-6 py-3">
-                    Name
-                </th>
-                <th scope="col" className="px-6 py-3">
-                    Duration
-                </th>
-            </tr>
-        </thead>
-        <tbody>
-            {
-                users && (
-                    users.map((user) => (
-                        <tr key={user.name} className="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
-                        <th scope="row" className="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
-                            {user.name}
-                        </th>
-                        <td className="px-6 py-4">
-                            {user.duration / 100}s
-                        </td>
-        
-                    </tr>
-                    ))
-                )
-            }
-      
-        </tbody>
-          </table>
+      {loading ? (
+                    <div className="text-center text-gray-500 dark:text-gray-400">Loading users...</div>
+                ) : (
+                    <table className="w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400">
+                        <thead className="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
+                            <tr>
+                                <th scope="col" className="px-6 py-3">
+                                    Name
+                                </th>
+                                <th scope="col" className="px-6 py-3">
+                                    Duration
+                                </th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {
+                                users.map((user) => (
+                                    <tr key={user.name} className="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
+                                        <th scope="row" className="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
+                                            {user.name}
+                                        </th>
+                                        <td className="px-6 py-4">
+                                            {user.duration / 100}s
+                                        </td>
+                                    </tr>
+                                ))
+                            }
+                        </tbody>
+                    </table>
+                )}
           </div>
 
     </section>
